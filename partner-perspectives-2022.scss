@@ -1,0 +1,458 @@
+/*Variables*/
+$cta-orange:#F4B223;
+$cta-aqua:#006272;
+$cta-navy-blue:#253746;
+$blue:#1C3C4B;
+$cta-grey1:#F7F8F9;
+$cta-grey2:#808084;
+$dark-grey:#474747;
+$light-gray:#CCCCCC;
+$font-stack:'Roboto',
+sans-serif;
+
+
+/* Responsive Mixins */
+@mixin for-phone-only {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-tablet-down {
+    @media (max-width: 1100px) {
+        @content;
+    }
+}
+
+@mixin for-desktop {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin xl-large-desktop {
+    @media (min-width: 1600px) {
+        @content;
+    }
+}
+
+@mixin xxl-large-desktop {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}
+
+/*Functions */
+/*Typography and FontSize Function */
+@function remCalc($size) {
+    $remSize: $size/16px;
+    @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+    font-size: $size; //Fallback in px
+    font-size: remCalc($size);
+}
+
+html,
+body {
+    font-family: $font-stack;
+    color: $dark-grey;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    letter-spacing: 0.1px;
+}
+
+/* Backgrounds and Colors */
+.cta-aqua-bg {
+    background-color: $cta-aqua;
+}
+
+.cta-navy-bg {
+    background-color: $cta-navy-blue;
+}
+
+.cta-aqua-text {
+    color: $cta-aqua;
+}
+
+.cta-navy-text {
+    color: $cta-navy-blue;
+}
+
+.cta-gray-text {
+    color: $light-gray;
+}
+
+.cta-orange-text {
+    color: $cta-orange;
+}
+
+.partner-perspectives-2022 {
+    h2 {
+        @include fontSize(24px);
+    }
+
+    .section-image {
+        max-width: 100%;
+    }
+
+    .btn {
+        padding: 10px 42px;
+        border-radius: 2px;
+    }
+
+    .btn-warning {
+        font-weight: bold;
+        color: $cta-navy-blue;
+        background: $cta-orange;
+        border-color: $cta-orange;
+    }
+
+    .nav-link {
+        font-weight: bold;
+        color: $cta-navy-blue;
+    }
+
+    .nav-tabs .nav-item.show .nav-link,
+    .nav-tabs .nav-link.active {
+        color: $cta-navy-blue;
+        font-weight: bold;
+        background-color: #F5F7F9;
+    }
+}
+
+.takeaways li {
+    margin-top: 0.875rem;
+}
+
+@include for-desktop {
+
+    .monetary-policy p,
+    .monetary-policy ul,
+    .supply-chain p,
+    .supply-chain ul,
+    .sustainable p,
+    .sustainable ul,
+    .international p,
+    .international ul,
+    .factor p,
+    .factor ul,
+    .structural p,
+    .structural ul {
+        max-width: 720px;
+    }
+}
+
+.section-hero {
+    background-color: $blue;
+    color: #fff;
+    padding-top: 7rem;
+    padding-bottom: 1rem;
+
+    h1 {
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    img {
+        max-width: 500px;
+        height: auto;
+        width: 100%;
+    }
+
+    p {
+        font-size: 18px;
+        letter-spacing: 0.1px;
+    }
+
+    @include for-desktop {
+
+        p,
+        h1 {
+            max-width: 450px;
+        }
+    }
+}
+
+/*Sidebar */
+
+aside {
+    border-top: 10px solid $cta-orange;
+
+    h4 {
+        @include fontSize(18px);
+    }
+
+    h3 {
+        @include fontSize(26px);
+    }
+}
+
+.contact-us {
+    background: $blue;
+    padding-top: remCalc(20px);
+    padding-bottom: remCalc(14px);
+    margin-top: remCalc(50px);
+    margin-bottom: remCalc(54px);
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    h2 {
+        @include fontSize(32px);
+        color: #fff;
+        font-weight: normal;
+    }
+
+    a {
+        color: $cta-orange;
+        font-weight: bold;
+    }
+}
+
+.affiliates {
+    letter-spacing: 0.1px;
+    margin-bottom: remCalc(50px);
+
+    .affiliates-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    img {
+        display: inline-block;
+    }
+
+    @include for-phone-only {
+        img {
+            display: block;
+            margin: 1.45rem auto;
+        }
+
+        .affiliates-container {
+            flex-direction: column;
+        }
+    }
+}
+
+.disclosures {
+    @include fontSize(14px);
+}
+
+footer {
+    background-color: $cta-navy-blue;
+    color: #fff;
+    padding: 2rem;
+    letter-spacing: 0.1px;
+
+    p {
+        @include fontSize(14px);
+    }
+
+    a.nav-link {
+        color: #fff !important;
+
+        .fa-lg {
+            font-size: 28px;
+        }
+    }
+}
+
+
+/*CSS Only Responsive Menu */
+.cta-navigation {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
+
+.cta-navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+.cta-navigation li a {
+    display: block;
+    text-decoration: none;
+    color: #243746;
+    padding: 13px 30px;
+    text-align: center;
+    border-bottom: 1px solid #243746;
+}
+
+.cta-navigation li a:hover {
+    color: #243746;
+}
+
+.cta-navigation li a:active,
+.cta-navigation li a.active {
+    font-weight: bold;
+    color: #243746;
+}
+
+/* menu */
+.cta-navigation .menu {
+    clear: both;
+    max-height: 0;
+    -webkit-transition: max-height 0.2s ease-out;
+    transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+.cta-navigation .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.cta-navigation .menu-icon .navicon {
+    background: #808084;
+    display: block;
+    height: 2px;
+    position: relative;
+    -webkit-transition: background 0.2s ease-out;
+    transition: background 0.2s ease-out;
+    width: 18px;
+}
+
+.cta-navigation .menu-icon .navicon:before,
+.cta-navigation .menu-icon .navicon:after {
+    background: #808084;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+
+.cta-navigation .menu-icon .navicon:before {
+    top: 5px;
+}
+
+.cta-navigation .menu-icon .navicon:after {
+    top: -5px;
+}
+
+/* menu btn */
+.cta-navigation .menu-btn {
+    display: none;
+}
+
+.cta-navigation .menu-btn:checked~.menu {
+    max-height: 240px;
+}
+
+.cta-navigation .menu-btn:checked~.menu-icon .navicon {
+    background: transparent;
+}
+
+.cta-navigation .menu-btn:checked~.menu-icon .navicon:before {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.cta-navigation .menu-btn:checked~.menu-icon .navicon:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.cta-navigation .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+.cta-navigation .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+/*ipads and small tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 972px) {
+    .cta-navigation .cta-logo {
+        margin-top: 2rem;
+        max-width: 190px;
+    }
+}
+
+/*iphones and phones */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .cta-navigation .cta-logo {
+        margin-top: 7px;
+        max-width: 200px;
+    }
+}
+
+@media (min-width: 769px) {
+
+    /*Carillon Logo */
+    .cta-logo {
+        display: inline-block;
+        padding-top: 1rem;
+        margin-bottom: 20px;
+        padding-left: 16px;
+        max-width: 190px;
+    }
+
+    .cta-navigation li {
+        float: left;
+    }
+
+    .cta-navigation li:last-child {
+        border-right: none;
+    }
+
+    .cta-navigation li a {
+        padding: 34px 22px 0 22px;
+        text-align: center;
+        border-bottom: none;
+    }
+
+    .cta-navigation li a::after:last-child {
+        border-right: none;
+    }
+
+    .cta-navigation .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+
+    .cta-navigation .menu-icon {
+        display: none;
+    }
+}
+
+/*Ipad and tablet devices */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    section#top.cta-navigation {
+        margin-left: -30px;
+    }
+}
+
+/*xLarge Screens and Devices */
+@media (min-width: 120em) {
+    .cta-logo {
+        max-width: 215px;
+    }
+}
+
+/* End CSS Only Responsive Menu */
